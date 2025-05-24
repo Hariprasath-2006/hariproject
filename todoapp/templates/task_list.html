@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Tasks</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    a.add-btn {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    a.add-btn:hover {
+      background: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f8f9fa;
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      border-left: 5px solid #007BFF;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+
+    .status {
+      font-weight: bold;
+      color: green;
+    }
+
+    .incomplete {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+   <h2>Your Tasks</h2>
+<a href="{% url 'add_task' %}">➕ Add Task</a>
+<ul>
+  {% for task in tasks %}
+    <li>
+      {{ task.title }} - {% if task.completed %}✔{% else %}❌{% endif %}
+      <a href="{%url 'update' task.id %}">✏️ Edit</a>
+      <a href="{%url 'delete' task.id %}">🗑️ Delete</a>
+    </li>
+  {% empty %}
+    <li>No tasks found.</li>
+  {% endfor %}
+</ul>
+
+  </div>
+</body>
+</html>
