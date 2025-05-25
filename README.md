@@ -123,6 +123,3 @@ This project is created for learning purposes and personal task management.
 
 ---
 
-Let me know if you want me to turn this into a **PDF** for your submission.
-
-uu
